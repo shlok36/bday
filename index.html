@@ -31,35 +31,20 @@ html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:
 .video-controls button { padding:2vw 4vw; border:none; border-radius:5vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; font-weight:600; font-size:3vw; cursor:pointer; box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.4); transition:transform 0.3s;}
 .video-controls button:hover { transform:scale(1.1); }
 
-/* Page3 Letter Centered Square */
+/* Page3 Letter Image */
 #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); display:flex; justify-content:center; align-items:center; }
-.letter-box {
-  width:70vmin;       /* fixed square size */
-  height:70vmin;      /* fixed square size */
-  background:rgba(255,255,255,0.08);
+.letter-img {
+  width:80vmin;
+  height:80vmin;
+  max-width:400px;
+  max-height:400px;
+  object-fit:contain;
   border-radius:2vw;
-  padding:3vw;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
   box-shadow:0 1vw 3vw rgba(0,0,0,0.6);
 }
-.letter-box h2 {
-  font-family:'Sacramento',cursive;
-  font-size:calc(2.5vh + 2.5vw);
-  margin-bottom:1.5vh;
-  color:#ff99ff;
-}
-.letter-box p {
-  font-size:calc(1.3vh + 1.3vw);
-  line-height:1.4;
-  color:#f0d9ff;
-}
-.letter-box button {
+.letter-img button {
   margin-top:2vh;
-  padding:1.2vh 4vw;
+  padding:1vh 4vw;
   font-size:calc(1.2vh + 1.2vw);
   border:none;
   border-radius:8vw;
@@ -70,7 +55,7 @@ html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:
   box-shadow:0 1vw 3vw rgba(0,0,0,0.4);
   transition:transform 0.3s;
 }
-.letter-box button:hover { transform:scale(1.1); }
+.letter-img button:hover { transform:scale(1.1); }
 
 /* Page4 Slideshow */
 #page4 { background: linear-gradient(135deg,#0a0a0f,#1a1a2e); color:#fff; flex-direction:column; justify-content:center; align-items:center; padding:5vw; }
@@ -109,20 +94,10 @@ html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:
   <div class="signature">Made by Shlok</div>
 </div>
 
-<!-- Page3 Letter Centered -->
+<!-- Page3 Letter Image -->
 <div id="page3" class="page">
-  <div class="letter-box">
-    <h2>Dear Kinjal (habdi),</h2>
-    <p>
-      Happy Birthday, my princess! 🎂🎉<br><br>
-      Today’s the one day you officially get the license to boss everyone around even more than usual (beta zyada hawa me mt udna 😜).<br><br>
-      I don’t really know what to call us—more than just best friends, but not exactly love either. Whatever it is, I like it, because it’s ours. You make things lighter, funnier, and way more special.<br><br>
-      I hope this year tum chtiyo ki trah hasti raho (and maybe a few reasons to think of me 😏). Stay happy always.<br><br>
-      Made with a lot of wishes (and a little madness),<br>
-      <b>Shlok</b>
-    </p>
-    <button onclick="nextPage()">Next ➝</button>
-  </div>
+  <img src="letter.jpg" alt="Letter" class="letter-img">
+  <button onclick="nextPage()">Next ➝</button>
   <div class="signature">Made by Shlok</div>
 </div>
 
