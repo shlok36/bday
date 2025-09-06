@@ -31,27 +31,46 @@ html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:
 .video-controls button { padding:2vw 4vw; border:none; border-radius:5vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; font-weight:600; font-size:3vw; cursor:pointer; box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.4); transition:transform 0.3s;}
 .video-controls button:hover { transform:scale(1.1); }
 
-/* Page3 Letter */
+/* Page3 Letter full visible */
 #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); display:flex; justify-content:center; align-items:center; padding:5vw; }
 .letter-box {
-  width:100%;
+  width:90%;
   max-width:600px;
-  height:auto;
-  max-height:90vh;
+  height:90%;
   background:rgba(255,255,255,0.08);
   border-radius:3vw;
-  padding:4vw;
+  padding:2vw;
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;
+  justify-content:center;
   align-items:center;
   text-align:center;
   box-shadow:0 1vw 3vw rgba(0,0,0,0.6);
-  overflow-y:auto;
 }
-.letter-box h2 { font-family:'Sacramento',cursive; font-size:6vw; margin-bottom:2vw; color:#ff99ff; }
-.letter-box p { font-size:4vw; line-height:1.5; color:#f0d9ff; }
-.letter-box button { margin-top:3vw; padding:3vw 6vw; font-size:4vw; border:none; border-radius:10vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; cursor:pointer; font-weight:600; box-shadow:0 1vw 3vw rgba(0,0,0,0.4); transition:transform 0.3s; }
+.letter-box h2 {
+  font-family:'Sacramento',cursive;
+  font-size:calc(3vh + 3vw);
+  margin-bottom:2vh;
+  color:#ff99ff;
+}
+.letter-box p {
+  font-size:calc(1.5vh + 1.5vw);
+  line-height:1.5;
+  color:#f0d9ff;
+}
+.letter-box button {
+  margin-top:3vh;
+  padding:1.5vh 4vw;
+  font-size:calc(1.5vh + 1.5vw);
+  border:none;
+  border-radius:10vw;
+  background:linear-gradient(135deg,#ff4f81,#ff66cc);
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 1vw 3vw rgba(0,0,0,0.4);
+  transition:transform 0.3s;
+}
 .letter-box button:hover { transform:scale(1.1); }
 
 /* Page4 Slideshow */
@@ -62,11 +81,6 @@ html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:
 
 .signature { position:absolute; font-family:'Sacramento',cursive; font-size:4vw; color:#ff99ff; opacity:0.8; bottom:2vw; left:50%; transform:translateX(-50%); }
 
-@media(max-width:480px){
-  .letter-box p { font-size:4.5vw; line-height:1.4; }
-  .letter-box h2 { font-size:7vw; }
-  .letter-box button { font-size:5vw; padding:4vw 8vw; }
-}
 </style>
 </head>
 <body>
