@@ -9,38 +9,21 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:hidden; background:#000; }
 
-  /* Elegant animated gradient background */
+  /* Animated elegant background */
   body::before {
     content:"";
     position:fixed;
     top:0; left:0;
     width:100%; height:100%;
-    background: linear-gradient(-45deg, #0f0f1f, #1a1a2e, #ff99cc, #ff4f81);
+    background: linear-gradient(-45deg, #0f0f1f, #1a1a2e, #ff4f81, #ff66cc);
     background-size: 400% 400%;
-    animation: gradientBG 20s ease infinite;
+    animation: gradientBG 15s ease infinite;
     z-index:-2;
   }
   @keyframes gradientBG {
     0% { background-position:0% 50%; }
     50% { background-position:100% 50%; }
     100% { background-position:0% 50%; }
-  }
-
-  /* Subtle sparkles */
-  body::after {
-    content:"";
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
-    background-size:3vw 3vw;
-    animation: twinkle 6s linear infinite;
-    z-index:-1;
-  }
-  @keyframes twinkle {
-    from {opacity:0.4;}
-    50% {opacity:0.8;}
-    to {opacity:0.4;}
   }
 
   .page {
@@ -67,7 +50,11 @@
 
   /* Page3 Scratch Letter */
   #page3 { display:flex; justify-content:center; align-items:center; flex-direction:column; padding:3vw; }
-  .scratch-container { position:relative; max-width:85vw; max-height:80vh; }
+  .scratch-container {
+    position:relative;
+    max-width:85vw;
+    max-height:80vh;
+  }
   .scratch-container img {
     width:100%; height:auto;
     border-radius:2vw;
@@ -90,6 +77,7 @@
   .slideshow { width:90%; max-width:400px; display:flex; justify-content:center; align-items:center; }
   .slideshow img { width:100%; border-radius:3vw; box-shadow:0 0.5vw 3vw rgba(0,0,0,0.6); transition:opacity 0.6s ease-in-out; border:0.5vw solid #ff4f81; }
 
+  /* Signature */
   .signature { position:absolute; font-family:'Sacramento',cursive; font-size:4vw; color:#ff99ff; opacity:0.8; bottom:2vw; left:50%; transform:translateX(-50%); }
 </style>
 </head>
@@ -188,7 +176,7 @@ setInterval(()=>{
   setTimeout(()=>{ slide.src=photos[idx]; slide.style.opacity=1; },600);
 },3000);
 
-// Scratch effect with auto-clear
+// Scratch effect
 const scratchCanvas = document.getElementById("scratchCanvas");
 const letterImg = document.getElementById("letterImg");
 const ctx = scratchCanvas.getContext("2d");
@@ -198,10 +186,17 @@ function resizeCanvas(){
   scratchCanvas.height = letterImg.clientHeight;
   ctx.fillStyle = "magenta";
   ctx.fillRect(0,0,scratchCanvas.width,scratchCanvas.height);
+
+  // Add hint text
+  ctx.fillStyle = "white";
+  ctx.font = "bold 3vw Poppins";
+  ctx.textAlign = "center";
+  ctx.fillText("Scratch here to reveal your letter 💌", scratchCanvas.width/2, scratchCanvas.height/2);
 }
 window.addEventListener("resize", resizeCanvas);
 letterImg.onload = resizeCanvas;
 
+// Scratch logic
 let scratching = false;
 function getPos(e){
   const rect = scratchCanvas.getBoundingClientRect();
@@ -217,7 +212,6 @@ function scratch(e){
   ctx.beginPath();
   ctx.arc(x,y,25,0,Math.PI*2);
   ctx.fill();
-  checkScratchCompletion();
 }
 scratchCanvas.addEventListener("mousedown",()=>{scratching=true;});
 scratchCanvas.addEventListener("mouseup",()=>{scratching=false;});
@@ -225,19 +219,6 @@ scratchCanvas.addEventListener("mousemove",scratch);
 scratchCanvas.addEventListener("touchstart",()=>{scratching=true;},{passive:false});
 scratchCanvas.addEventListener("touchend",()=>{scratching=false;});
 scratchCanvas.addEventListener("touchmove",scratch,{passive:false});
-
-function checkScratchCompletion(){
-  const imgData = ctx.getImageData(0,0,scratchCanvas.width,scratchCanvas.height);
-  let cleared=0;
-  for(let i=3;i<imgData.data.length;i+=4){
-    if(imgData.data[i]===0) cleared++;
-  }
-  const percent = cleared / (scratchCanvas.width*scratchCanvas.height) * 100;
-  if(percent > 40){
-    ctx.clearRect(0,0,scratchCanvas.width,scratchCanvas.height);
-    scratchCanvas.style.pointerEvents="none"; // disable further scratching
-  }
-}
 </script>
 </body>
 </html>
