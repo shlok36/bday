@@ -31,16 +31,12 @@
   .video-controls button { padding:2vw 4vw; border:none; border-radius:5vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; font-weight:600; font-size:3vw; cursor:pointer; box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.4); transition:transform 0.3s;}
   .video-controls button:hover { transform:scale(1.1); }
 
-  /* Page3 Letter */
-  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); display:flex; justify-content:center; align-items:center; flex-direction:column; }
-  .letter-box {
-    width:80vmin; height:80vmin; max-width:90vw; max-height:90vw;
-    background:rgba(255,255,255,0.08); border-radius:3vw; padding:4vmin;
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
-    text-align:center; box-shadow:0 1vw 3vw rgba(0,0,0,0.6); overflow:auto;
+  /* Page3 Letter (Image) */
+  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); display:flex; justify-content:center; align-items:center; flex-direction:column; padding:3vw; }
+  .letter-image {
+    max-width:85vw; max-height:80vh; border-radius:2vw;
+    box-shadow:0 1vw 3vw rgba(0,0,0,0.6); object-fit:contain;
   }
-  .letter-box h1 { font-family:'Sacramento',cursive; font-size:6vmin; margin-bottom:2vmin; color:#ffccff; text-shadow:0 0 1vmin #ff66cc,0 0 2vmin #ff4f81; }
-  .letter-box p { font-size:3vmin; line-height:1.4; color:#fff; overflow-wrap: break-word; }
   #letterNextBtn { margin-top:3vmin; padding:2vmin 4vmin; font-size:3vmin; border:none; border-radius:10vmin; background:linear-gradient(135deg,#ff66cc,#ff4f81); color:white; cursor:pointer; font-weight:700; box-shadow:0 0.5vmin 1.5vmin rgba(0,0,0,0.6); transition:transform 0.3s; }
   #letterNextBtn:hover { transform:scale(1.1); }
 
@@ -80,18 +76,9 @@
   <div class="signature">Made by Shlok</div>
 </div>
 
-<!-- Page3 Letter -->
+<!-- Page3 Letter (Image) -->
 <div id="page3" class="page">
-  <div class="letter-box">
-    <h1>Happy Birthday, my princess! 🎂🎉</h1>
-    <p>
-      Today’s the one day you officially get the license to boss everyone around even more than usual (beta zyada hawa me mt udna 😜).<br><br>
-      I don’t really know what to call us—more than just best friends, but not exactly love either. Whatever it is, I like it, because it’s ours. You make things lighter, funnier, and way more special.<br><br>
-      I hope this year tum chtiyo ki trah hasti raho (and maybe a few reasons to think of me 😏). Stay happy always.<br><br>
-      Made with a lot of wishes (and a little madness),<br>
-      <b>Shlok</b>
-    </p>
-  </div>
+  <img src="letter.webp" alt="Birthday Letter" class="letter-image">
   <button id="letterNextBtn" onclick="nextPage()">Next ➝</button>
   <div class="signature">Made by Shlok</div>
 </div>
@@ -156,3 +143,4 @@ setInterval(()=>{
 </script>
 </body>
 </html>
+
