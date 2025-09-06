@@ -1,218 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday Kinjal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { height: 100%; width: 100%; font-family: "Poppins", sans-serif; overflow: hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Kinjal</title>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, html { height: 100%; width: 100%; font-family: 'Poppins', sans-serif; overflow-x: hidden; background: #000; }
 
-    .page {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 1s ease;
-    }
+  .page {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: opacity 1s ease;
+  }
 
-    /* Page 1 */
-    #page1 {
-      background: radial-gradient(circle at center, #0f0f1f, #000000);
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    #countdown {
-      font-size: 5rem;
-      font-weight: 800;
-      color: #ff4f81;
-      animation: pop 1s infinite alternate;
-    }
-    @keyframes pop {
-      from { transform: scale(1); opacity: 0.8; }
-      to { transform: scale(1.4); opacity: 1; }
-    }
-    #birthdayMessage {
-      display: none;
-      font-family: 'Sacramento', cursive;
-      font-size: 4rem;
-      color: #ffccff;
-      text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff4f81;
-      animation: glow 1.5s infinite alternate;
-    }
-    #birthdayText { display: none; }
-    #birthdayText h1 {
-      font-family: "Sacramento", cursive;
-      font-size: 4rem;
-      color: #ffccff;
-      animation: glow 1.5s infinite alternate;
-    }
-    #birthdayText p {
-      font-size: 2rem;
-      margin-top: 1rem;
-      color: #f8e1ff;
-    }
-    #birthdayText img {
-      margin-top: 25px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid #ff4f81;
-      box-shadow: 0 0 20px rgba(255,79,129,0.8);
-    }
-    #birthdayText button {
-      margin-top: 40px;
-      padding: 15px 35px;
-      font-size: 1.3rem;
-      border: none;
-      border-radius: 40px;
-      background: linear-gradient(135deg, #ff4f81, #ff66cc);
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
-    }
-    #birthdayText button:hover { transform: scale(1.1); }
+  /* Page 1 */
+  #page1 { background: radial-gradient(circle at center, #0f0f1f, #000); color: #fff; text-align: center; padding: 5vw; }
+  #countdown { font-size: 15vw; font-weight: 800; color: #ff4f81; animation: pop 1s infinite alternate; }
+  @keyframes pop { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.4); opacity: 1; } }
+  #birthdayMessage { display: none; font-family: 'Sacramento', cursive; font-size: 12vw; color: #ffccff; text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff4f81; animation: glow 1.5s infinite alternate; }
+  #birthdayText { display: none; text-align: center; }
+  #birthdayText h1 { font-family: 'Sacramento', cursive; font-size: 10vw; color: #ffccff; animation: glow 1.5s infinite alternate; }
+  #birthdayText p { font-size: 5vw; margin-top: 1vw; color: #f8e1ff; }
+  #birthdayText img { margin-top: 4vw; width: 50vw; max-width: 240px; aspect-ratio: 1/1; border-radius: 50%; object-fit: cover; border: 0.8vw solid #ff4f81; box-shadow: 0 0 5vw rgba(255,79,129,0.8); }
+  #birthdayText button { margin-top: 5vw; padding: 3vw 7vw; font-size: 4vw; border: none; border-radius: 10vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; box-shadow: 0 1vw 3vw rgba(0,0,0,0.4); transition: transform 0.3s; }
+  #birthdayText button:hover { transform: scale(1.1); }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 15px #ff66cc, 0 0 30px #ff4f81; }
-      to { text-shadow: 0 0 30px #ff99ff, 0 0 50px #ff4f81; }
-    }
+  @keyframes glow { from { text-shadow: 0 0 3vw #ff66cc, 0 0 6vw #ff4f81; } to { text-shadow: 0 0 6vw #ff99ff, 0 0 10vw #ff4f81; } }
 
-    /* Page 2 (Video) */
-    #page2 {
-      background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
-      color: white;
-      opacity: 0;
-      pointer-events: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    #videoContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    #birthdayVideo {
-      max-width: 90%;   /* responsive size */
-      max-height: 80vh;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(255,79,129,0.8);
-      background: black;
-    }
-    .video-controls {
-      margin-top: 15px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .video-controls button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ff4f81, #ff66cc);
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
-    }
-    .video-controls button:hover { transform: scale(1.1); }
+  /* Page 2 */
+  #page2 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: white; opacity: 0; pointer-events: none; flex-direction: column; justify-content: center; align-items: center; }
+  #videoContainer { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 90%; max-width: 600px; }
+  #birthdayVideo { width: 100%; max-height: 60vh; border-radius: 3vw; box-shadow: 0 0 4vw rgba(255,79,129,0.8); background: black; }
+  .video-controls { margin-top: 2vw; display: flex; gap: 2vw; flex-wrap: wrap; justify-content: center; }
+  .video-controls button { padding: 2vw 4vw; border: none; border-radius: 5vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; font-size: 3vw; box-shadow: 0 0.5vw 1.5vw rgba(0,0,0,0.4); transition: transform 0.3s; }
+  .video-controls button:hover { transform: scale(1.1); }
 
-    /* Page 3 */
-    #page3 {
-      background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
-      color: #f5f5f5;
-      opacity: 0;
-      pointer-events: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      overflow: auto;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      align-items: flex-start;
-      justify-content: center;
-      z-index: 1;
-      max-width: 1200px;
-      width: 100%;
-    }
-    .letter {
-      flex: 1 1 420px;
-      background: rgba(255,255,255,0.08);
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-      line-height: 1.8;
-      font-size: 1.2rem;
-      color: #f0d9ff;
-    }
-    .letter h2 {
-      margin-bottom: 15px;
-      font-family: "Sacramento", cursive;
-      font-size: 2.8rem;
-      color: #ff99ff;
-    }
-    .slideshow {
-      flex: 0 1 320px;
-      text-align: center;
-    }
-    .slideshow img {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-      transition: opacity 0.6s ease-in-out;
-      border: 4px solid #ff4f81;
-    }
+  /* Page 3 */
+  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: #f5f5f5; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: flex-start; flex-direction: column; padding: 5vw; overflow-y: auto; }
+  .container { display: flex; flex-direction: column; gap: 5vw; align-items: center; width: 100%; max-width: 1000px; }
+  .letter { background: rgba(255,255,255,0.08); padding: 5vw; border-radius: 3vw; box-shadow: 0 1vw 3vw rgba(0,0,0,0.6); line-height: 1.8; font-size: 4vw; color: #f0d9ff; }
+  .letter h2 { margin-bottom: 3vw; font-family: 'Sacramento', cursive; font-size: 8vw; color: #ff99ff; }
+  .slideshow { margin-top: 5vw; width: 100%; text-align: center; }
+  .slideshow img { width: 80%; max-width: 300px; border-radius: 3vw; box-shadow: 0 0.5vw 3vw rgba(0,0,0,0.6); transition: opacity 0.6s ease-in-out; border: 0.5vw solid #ff4f81; }
 
-    /* Floating hearts */
-    .hearts {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .heart {
-      position: absolute;
-      color: #ff4f81;
-      font-size: 24px;
-      animation: float 6s linear infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh); opacity: 1; }
-      100% { transform: translateY(-10vh); opacity: 0; }
-    }
+  /* Floating hearts */
+  .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .heart { position: absolute; color: #ff4f81; font-size: 6vw; animation: float 6s linear infinite; }
+  @keyframes float { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
 
-    /* Signatures */
-    .signature {
-      position: absolute;
-      font-family: "Sacramento", cursive;
-      font-size: 1.2rem;
-      color: #ff99ff;
-      opacity: 0.8;
-    }
-    #page1 .signature { bottom: 15px; }
-    #page2 .signature { bottom: 15px; }
-    #page3 .signature { bottom: 15px; right: 20px; }
-  </style>
+  /* Signatures */
+  .signature { position: absolute; font-family: 'Sacramento', cursive; font-size: 4vw; color: #ff99ff; opacity: 0.8; bottom: 2vw; left: 50%; transform: translateX(-50%); }
+</style>
 </head>
 <body>
   <!-- Page 1 -->
@@ -222,7 +63,7 @@
     <div id="birthdayText">
       <h1>Happy Birthday Kinjal</h1>
       <p>(habdi)</p>
-      <img src="photo1.jpg" alt="Kinjal" />
+      <img src="photo1.jpg" alt="Kinjal">
       <button onclick="nextPage()">Next ➝</button>
     </div>
     <div class="signature">Made by Shlok</div>
@@ -262,87 +103,79 @@
         </p>
       </div>
       <div class="slideshow">
-        <img id="slide" src="photo1.jpg" alt="Kinjal" />
+        <img id="slide" src="photo1.jpg" alt="Kinjal">
       </div>
     </div>
     <div class="signature">Made by Shlok</div>
   </div>
 
-  <script>
-    // Countdown logic
-    let count = 3;
-    const countdown = document.getElementById("countdown");
-    const birthdayMessage = document.getElementById("birthdayMessage");
-    const birthdayText = document.getElementById("birthdayText");
+<script>
+  // Countdown
+  let count = 3;
+  const countdown = document.getElementById("countdown");
+  const birthdayMessage = document.getElementById("birthdayMessage");
+  const birthdayText = document.getElementById("birthdayText");
 
-    const timer = setInterval(() => {
-      count--;
-      if (count > 0) countdown.textContent = count;
-      else {
-        clearInterval(timer);
-        countdown.style.display = "none";
-        birthdayMessage.style.display = "block";
-        setTimeout(() => {
-          birthdayMessage.style.display = "none";
-          birthdayText.style.display = "block";
-        }, 2000);
-      }
-    }, 1000);
-
-    let currentPage = 1;
-    const video = document.getElementById("birthdayVideo");
-
-    function nextPage() {
-      // stop video if we are on page2
-      if (currentPage === 2 && !video.paused) {
-        video.pause();
-        video.currentTime = 0;
-      }
-
-      const current = document.getElementById("page" + currentPage);
-      current.style.opacity = "0";
+  const timer = setInterval(() => {
+    count--;
+    if (count > 0) countdown.textContent = count;
+    else {
+      clearInterval(timer);
+      countdown.style.display = "none";
+      birthdayMessage.style.display = "block";
       setTimeout(() => {
-        current.style.display = "none";
-        currentPage++;
-        const next = document.getElementById("page" + currentPage);
-        if (next) {
-          next.style.opacity = "1";
-          next.style.pointerEvents = "auto";
-        }
-      }, 1000);
+        birthdayMessage.style.display = "none";
+        birthdayText.style.display = "block";
+      }, 2000);
     }
+  }, 1000);
 
-    // Video controls
-    function playVideo() { video.play(); }
-    function pauseVideo() { video.pause(); }
-    function restartVideo() { video.currentTime = 0; video.play(); }
-    function toggleMute() {
-      video.muted = !video.muted;
-      document.getElementById("muteBtn").textContent = video.muted ? "🔊 Unmute" : "🔇 Mute";
+  let currentPage = 1;
+  const video = document.getElementById("birthdayVideo");
+
+  function nextPage() {
+    if (currentPage === 2 && !video.paused) {
+      video.pause();
+      video.currentTime = 0;
     }
+    const current = document.getElementById("page" + currentPage);
+    current.style.opacity = "0";
+    setTimeout(() => {
+      current.style.display = "none";
+      currentPage++;
+      const next = document.getElementById("page" + currentPage);
+      if (next) { next.style.opacity = "1"; next.style.pointerEvents = "auto"; }
+    }, 1000);
+  }
 
-    // Floating hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random()*100+"vw";
-      heart.style.fontSize = (16+Math.random()*28)+"px";
-      heart.style.animationDuration = (4+Math.random()*5)+"s";
-      document.getElementById("hearts").appendChild(heart);
-      setTimeout(() => heart.remove(),7000);
-    }
-    setInterval(createHeart, 400);
+  // Video controls
+  function playVideo() { video.play(); }
+  function pauseVideo() { video.pause(); }
+  function restartVideo() { video.currentTime = 0; video.play(); }
+  function toggleMute() { video.muted = !video.muted; document.getElementById("muteBtn").textContent = video.muted ? "🔊 Unmute" : "🔇 Mute"; }
 
-    // Slideshow
-    const photos = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
-    let idx = 0;
-    const slide = document.getElementById("slide");
-    setInterval(() => {
-      idx = (idx+1)%photos.length;
-      slide.style.opacity = 0;
-      setTimeout(()=>{ slide.src = photos[idx]; slide.style.opacity=1; },600);
-    },3000);
-  </script>
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.fontSize = (4+Math.random()*6)+"vw";
+    heart.style.animationDuration = (4+Math.random()*5)+"s";
+    document.getElementById("hearts").appendChild(heart);
+    setTimeout(()=>heart.remove(),7000);
+  }
+  setInterval(createHeart, 400);
+
+  // Slideshow
+  const photos = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
+  let idx = 0;
+  const slide = document.getElementById("slide");
+  setInterval(() => {
+    idx = (idx+1)%photos.length;
+    slide.style.opacity = 0;
+    setTimeout(()=>{ slide.src = photos[idx]; slide.style.opacity=1; },600);
+  },3000);
+</script>
 </body>
 </html>
