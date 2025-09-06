@@ -9,15 +9,15 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:hidden; background:#000; }
 
-  /* Elegant gradient background */
+  /* Elegant animated gradient background */
   body::before {
     content:"";
     position:fixed;
     top:0; left:0;
     width:100%; height:100%;
-    background: linear-gradient(120deg, #1a1a2e, #2b2b3d, #3a1c40, #1a1a2e);
-    background-size: 300% 300%;
-    animation: gradientBG 18s ease infinite;
+    background: linear-gradient(-45deg, #0f0f1f, #1a1a2e, #ff99cc, #ff4f81);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
     z-index:-2;
   }
   @keyframes gradientBG {
@@ -26,20 +26,21 @@
     100% { background-position:0% 50%; }
   }
 
-  /* Floating sparkles */
-  .sparkle {
+  /* Subtle sparkles */
+  body::after {
+    content:"";
     position:fixed;
-    width:4px; height:4px;
-    background:white;
-    border-radius:50%;
-    opacity:0.7;
-    animation: float 10s linear infinite;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-size:3vw 3vw;
+    animation: twinkle 6s linear infinite;
     z-index:-1;
   }
-  @keyframes float {
-    from { transform:translateY(100vh) scale(0.5); opacity:0; }
-    50% { opacity:1; }
-    to { transform:translateY(-10vh) scale(1.2); opacity:0; }
+  @keyframes twinkle {
+    from {opacity:0.4;}
+    50% {opacity:0.8;}
+    to {opacity:0.4;}
   }
 
   .page {
@@ -51,24 +52,34 @@
 
   /* Page1 Countdown */
   #page1 { color:#fff; text-align:center; }
-  #countdown { font-size:15vw; font-weight:800; color:#ff4f81; text-shadow:0 0 20px rgba(255,79,129,0.7); animation:pop 1s infinite alternate; }
+  #countdown { font-size:15vw; font-weight:800; color:#ff4f81; animation:pop 1s infinite alternate; }
   @keyframes pop { from { transform:scale(1); opacity:0.8;} to { transform:scale(1.4); opacity:1;} }
-  #birthdayMessage { display:none; font-family:'Sacramento',cursive; font-size:12vw; color:#ffccff; text-shadow:0 0 30px rgba(255,102,204,0.8),0 0 50px rgba(255,79,129,0.8); animation:glow 1.5s infinite alternate; }
-  @keyframes glow { from {text-shadow:0 0 2vw #ff66cc,0 0 4vw #ff4f81;} to {text-shadow:0 0 5vw #ff99ff,0 0 8vw #ff4f81;} }
+  #birthdayMessage { display:none; font-family:'Sacramento',cursive; font-size:12vw; color:#ffccff; text-shadow:0 0 20px #ff66cc,0 0 40px #ff4f81; animation:glow 1.5s infinite alternate; }
+  @keyframes glow { from {text-shadow:0 0 3vw #ff66cc,0 0 6vw #ff4f81;} to {text-shadow:0 0 6vw #ff99ff,0 0 10vw #ff4f81;} }
 
   /* Page2 Video */
   #page2 { color:white; flex-direction:column; }
   #videoContainer { width:90%; max-width:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  #birthdayVideo { width:100%; max-height:60vh; border-radius:3vw; box-shadow:0 0 3vw rgba(255,79,129,0.7); background:black; }
+  #birthdayVideo { width:100%; max-height:60vh; border-radius:3vw; box-shadow:0 0 4vw rgba(255,79,129,0.8); background:black; }
   .video-controls { margin-top:2vw; display:flex; gap:2vw; flex-wrap:wrap; justify-content:center; }
   .video-controls button { padding:2vw 4vw; border:none; border-radius:5vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; font-weight:600; font-size:3vw; cursor:pointer; box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.4); transition:transform 0.3s;}
   .video-controls button:hover { transform:scale(1.1); }
 
-  /* Page3 Letter */
+  /* Page3 Scratch Letter */
   #page3 { display:flex; justify-content:center; align-items:center; flex-direction:column; padding:3vw; }
-  .letter-image {
-    max-width:85vw; max-height:80vh; border-radius:2vw;
-    box-shadow:0 1vw 3vw rgba(0,0,0,0.5); object-fit:contain;
+  .scratch-container { position:relative; max-width:85vw; max-height:80vh; }
+  .scratch-container img {
+    width:100%; height:auto;
+    border-radius:2vw;
+    box-shadow:0 1vw 3vw rgba(0,0,0,0.5);
+    display:block;
+  }
+  #scratchCanvas {
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    border-radius:2vw;
+    cursor:grab;
   }
   #letterNextBtn { margin-top:3vmin; padding:2vmin 4vmin; font-size:3vmin; border:none; border-radius:10vmin; background:linear-gradient(135deg,#ff66cc,#ff4f81); color:white; cursor:pointer; font-weight:700; box-shadow:0 0.5vmin 1.5vmin rgba(0,0,0,0.6); transition:transform 0.3s; }
   #letterNextBtn:hover { transform:scale(1.1); }
@@ -77,24 +88,12 @@
   #page4 { color:#fff; flex-direction:column; justify-content:center; align-items:center; padding:5vw; }
   #page4 h1 { font-family:'Sacramento',cursive; font-size:10vw; color:#ffccff; margin-bottom:4vw; text-shadow:0 0 2vw #ff4f81,0 0 4vw #ff66cc; text-align:center; }
   .slideshow { width:90%; max-width:400px; display:flex; justify-content:center; align-items:center; }
-  .slideshow img { width:100%; border-radius:3vw; box-shadow:0 0.5vw 2vw rgba(0,0,0,0.6); transition:opacity 0.6s ease-in-out; border:0.5vw solid #ff4f81; }
+  .slideshow img { width:100%; border-radius:3vw; box-shadow:0 0.5vw 3vw rgba(0,0,0,0.6); transition:opacity 0.6s ease-in-out; border:0.5vw solid #ff4f81; }
 
   .signature { position:absolute; font-family:'Sacramento',cursive; font-size:4vw; color:#ff99ff; opacity:0.8; bottom:2vw; left:50%; transform:translateX(-50%); }
 </style>
 </head>
 <body>
-
-<!-- Sparkles -->
-<script>
-for(let i=0;i<25;i++){
-  const s=document.createElement("div");
-  s.className="sparkle";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=(6+Math.random()*6)+"s";
-  s.style.animationDelay=(Math.random()*10)+"s";
-  document.body.appendChild(s);
-}
-</script>
 
 <!-- Page1 Countdown -->
 <div id="page1" class="page active">
@@ -121,9 +120,12 @@ for(let i=0;i<25;i++){
   <div class="signature">Made by Shlok</div>
 </div>
 
-<!-- Page3 Letter -->
+<!-- Page3 Scratch Letter -->
 <div id="page3" class="page">
-  <img src="letter.webp" alt="Birthday Letter" class="letter-image">
+  <div class="scratch-container">
+    <img src="letter.webp" alt="Birthday Letter" class="letter-image" id="letterImg">
+    <canvas id="scratchCanvas"></canvas>
+  </div>
   <button id="letterNextBtn" onclick="nextPage()">Next ➝</button>
   <div class="signature">Made by Shlok</div>
 </div>
@@ -185,6 +187,57 @@ setInterval(()=>{
   slide.style.opacity=0;
   setTimeout(()=>{ slide.src=photos[idx]; slide.style.opacity=1; },600);
 },3000);
+
+// Scratch effect with auto-clear
+const scratchCanvas = document.getElementById("scratchCanvas");
+const letterImg = document.getElementById("letterImg");
+const ctx = scratchCanvas.getContext("2d");
+
+function resizeCanvas(){
+  scratchCanvas.width = letterImg.clientWidth;
+  scratchCanvas.height = letterImg.clientHeight;
+  ctx.fillStyle = "magenta";
+  ctx.fillRect(0,0,scratchCanvas.width,scratchCanvas.height);
+}
+window.addEventListener("resize", resizeCanvas);
+letterImg.onload = resizeCanvas;
+
+let scratching = false;
+function getPos(e){
+  const rect = scratchCanvas.getBoundingClientRect();
+  const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+  const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+  return {x,y};
+}
+function scratch(e){
+  if(!scratching) return;
+  e.preventDefault();
+  const {x,y} = getPos(e);
+  ctx.globalCompositeOperation = "destination-out";
+  ctx.beginPath();
+  ctx.arc(x,y,25,0,Math.PI*2);
+  ctx.fill();
+  checkScratchCompletion();
+}
+scratchCanvas.addEventListener("mousedown",()=>{scratching=true;});
+scratchCanvas.addEventListener("mouseup",()=>{scratching=false;});
+scratchCanvas.addEventListener("mousemove",scratch);
+scratchCanvas.addEventListener("touchstart",()=>{scratching=true;},{passive:false});
+scratchCanvas.addEventListener("touchend",()=>{scratching=false;});
+scratchCanvas.addEventListener("touchmove",scratch,{passive:false});
+
+function checkScratchCompletion(){
+  const imgData = ctx.getImageData(0,0,scratchCanvas.width,scratchCanvas.height);
+  let cleared=0;
+  for(let i=3;i<imgData.data.length;i+=4){
+    if(imgData.data[i]===0) cleared++;
+  }
+  const percent = cleared / (scratchCanvas.width*scratchCanvas.height) * 100;
+  if(percent > 40){
+    ctx.clearRect(0,0,scratchCanvas.width,scratchCanvas.height);
+    scratchCanvas.style.pointerEvents="none"; // disable further scratching
+  }
+}
 </script>
 </body>
 </html>
