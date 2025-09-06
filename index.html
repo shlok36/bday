@@ -9,7 +9,7 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:hidden; background:#000; }
 
-  /* Animated elegant background */
+  /* Animated gradient background */
   body::before {
     content:"";
     position:fixed; top:0; left:0;
@@ -25,8 +25,20 @@
     100% { background-position:0% 50%; }
   }
 
+  /* Stars overlay */
+  body::after {
+    content:"";
+    position:fixed; top:0; left:0;
+    width:100%; height:100%;
+    background:transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+    opacity:0.4; z-index:-1;
+    animation: twinkle 5s linear infinite;
+  }
+  @keyframes twinkle { 0%{opacity:0.3;} 50%{opacity:0.6;} 100%{opacity:0.3;} }
+
   .page {
-    position:absolute; top:0; left:0; width:100%; height:100%;
+    position:absolute; top:0; left:0;
+    width:100%; height:100%;
     display:flex; justify-content:center; align-items:center; flex-direction:column;
     transition: opacity 0.8s ease; opacity:0; pointer-events:none;
   }
@@ -35,27 +47,18 @@
   /* Page1 Countdown */
   #page1 { color:#fff; text-align:center; }
   #countdown { font-size:15vw; font-weight:800; color:#ff4f81; animation:pop 1s infinite alternate; }
-  @keyframes pop { from { transform:scale(1); opacity:0.8;} to { transform:scale(1.4); opacity:1;} }
+  @keyframes pop { from{transform:scale(1); opacity:0.8;} to{transform:scale(1.4); opacity:1;} }
   #birthdayMessage { display:none; font-family:'Sacramento',cursive; font-size:12vw; color:#ffccff; text-shadow:0 0 20px #ff66cc,0 0 40px #ff4f81; animation:glow 1.5s infinite alternate; }
-  @keyframes glow { from {text-shadow:0 0 3vw #ff66cc,0 0 6vw #ff4f81;} to {text-shadow:0 0 6vw #ff99ff,0 0 10vw #ff4f81;} }
+  @keyframes glow { from{text-shadow:0 0 3vw #ff66cc,0 0 6vw #ff4f81;} to{text-shadow:0 0 6vw #ff99ff,0 0 10vw #ff4f81;} }
 
   /* Page2 Poster */
-  #page2 img {
-    max-width:85vw; max-height:75vh;
-    border-radius:2vw;
-    box-shadow:0 0 2vw #ffccff,0 0 4vw #ff66cc;
-    animation: zoomin 1.2s ease;
-  }
-  @keyframes zoomin {
-    from { transform:scale(0.7); opacity:0; }
-    to { transform:scale(1); opacity:1; }
-  }
-  #page2 button {
-    margin-top:4vw; padding:2vw 5vw; border:none; border-radius:5vw;
-    background:linear-gradient(135deg,#ff66cc,#ff4f81); color:white; font-size:5vw; font-weight:700;
-    box-shadow:0 0 2vw rgba(0,0,0,0.6); cursor:pointer; transition:transform 0.3s;
-  }
-  #page2 button:hover { transform:scale(1.1); }
+  #page2 { flex-direction:column; }
+  .poster-container { position: relative; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .poster-image { max-width:90vw; max-height:70vh; border-radius:2vw; box-shadow:0 0 2vw gold, 0 0 4vw rgba(255,215,0,0.6); animation: zoomIn 1.2s ease forwards; }
+  @keyframes zoomIn { from{transform:scale(0.8); opacity:0;} to{transform:scale(1); opacity:1;} }
+  #posterNextBtn { margin-top:2vmin; padding:1.5vmin 3vmin; font-size:3vmin; border:none; border-radius:10vmin; background:linear-gradient(135deg,#FFD700,#FFA500); color:black; font-weight:700; cursor:pointer; box-shadow:0 0.5vmin 1.5vmin rgba(0,0,0,0.6); transition:transform 0.3s; }
+  #posterNextBtn:hover { transform:scale(1.1); }
+  #confettiCanvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
 
   /* Page3 Video */
   #page3 { color:white; flex-direction:column; }
@@ -67,9 +70,9 @@
 
   /* Page4 Scratch Letter */
   #page4 { display:flex; justify-content:center; align-items:center; flex-direction:column; padding:3vw; }
-  .scratch-container { position:relative; max-width:85vw; max-height:80vh; }
-  .scratch-container img { width:100%; border-radius:2vw; box-shadow:0 1vw 3vw rgba(0,0,0,0.5); }
-  #scratchCanvas { position:absolute; top:0; left:0; width:100%; height:100%; border-radius:2vw; cursor:grab; }
+  .scratch-container { position:relative; display:inline-block; }
+  .letter-image { max-width:85vw; max-height:80vh; border-radius:2vw; box-shadow:0 1vw 3vw rgba(0,0,0,0.6); object-fit:contain; }
+  #scratchCanvas { position:absolute; top:0; left:0; border-radius:2vw; }
   #letterNextBtn { margin-top:3vmin; padding:2vmin 4vmin; font-size:3vmin; border:none; border-radius:10vmin; background:linear-gradient(135deg,#ff66cc,#ff4f81); color:white; cursor:pointer; font-weight:700; box-shadow:0 0.5vmin 1.5vmin rgba(0,0,0,0.6); transition:transform 0.3s; }
   #letterNextBtn:hover { transform:scale(1.1); }
 
@@ -79,19 +82,7 @@
   .slideshow { width:90%; max-width:400px; display:flex; justify-content:center; align-items:center; }
   .slideshow img { width:100%; border-radius:3vw; box-shadow:0 0.5vw 3vw rgba(0,0,0,0.6); transition:opacity 0.6s ease-in-out; border:0.5vw solid #ff4f81; }
 
-  /* Signature */
   .signature { position:absolute; font-family:'Sacramento',cursive; font-size:4vw; color:#ff99ff; opacity:0.8; bottom:2vw; left:50%; transform:translateX(-50%); }
-
-  /* Confetti */
-  .confetti {
-    position:fixed; top:0; left:50%;
-    width:10px; height:10px;
-    background: var(--c);
-    animation: fall 1.5s linear forwards;
-  }
-  @keyframes fall {
-    to { transform: translateY(100vh) rotate(720deg); opacity:0; }
-  }
 </style>
 </head>
 <body>
@@ -105,8 +96,11 @@
 
 <!-- Page2 Poster -->
 <div id="page2" class="page">
-  <img src="poster.png" alt="Birthday Poster">
-  <button onclick="nextPage()">Next ➝</button>
+  <div class="poster-container">
+    <img src="poster.png" alt="Birthday Poster" class="poster-image">
+    <canvas id="confettiCanvas"></canvas>
+    <button id="posterNextBtn" onclick="nextPage()">Next ➝</button>
+  </div>
   <div class="signature">Made by Shlok</div>
 </div>
 
@@ -131,7 +125,7 @@
 <!-- Page4 Scratch Letter -->
 <div id="page4" class="page">
   <div class="scratch-container">
-    <img src="letter.webp" alt="Birthday Letter" id="letterImg">
+    <img src="letter.webp" alt="Birthday Letter" class="letter-image" id="letterImg">
     <canvas id="scratchCanvas"></canvas>
   </div>
   <button id="letterNextBtn" onclick="nextPage()">Next ➝</button>
@@ -158,12 +152,12 @@ const pages = [
   document.getElementById("page5")
 ];
 
-// Countdown
 let countdown = 3;
 const countdownEl = document.getElementById("countdown");
 const birthdayMsg = document.getElementById("birthdayMessage");
 const video = document.getElementById("birthdayVideo");
 
+// Countdown
 const timer = setInterval(()=>{
   countdown--;
   if(countdown>0) countdownEl.textContent = countdown;
@@ -182,8 +176,8 @@ function nextPage(){
   if(currentPage>totalPages) currentPage=totalPages;
   pages[currentPage-1].classList.add("active");
 
-  // trigger confetti when page2 appears
-  if(currentPage===2){ launchConfetti(); }
+  if(currentPage===2) launchConfetti();
+  if(currentPage===4) resizeCanvas();
 }
 
 function playVideo(){ video.play(); }
@@ -191,41 +185,56 @@ function pauseVideo(){ video.pause(); }
 function restartVideo(){ video.currentTime=0; video.play(); }
 function toggleMute(){ video.muted=!video.muted; document.getElementById("muteBtn").textContent=video.muted?"🔊 Unmute":"🔇 Mute"; }
 
-// Slideshow
-const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
-let idx=0;
-const slide = document.getElementById("slide");
-setInterval(()=>{
-  idx=(idx+1)%photos.length;
-  slide.style.opacity=0;
-  setTimeout(()=>{ slide.src=photos[idx]; slide.style.opacity=1; },600);
-},3000);
+// Confetti
+function launchConfetti(){
+  const confettiCanvas = document.getElementById("confettiCanvas");
+  const ctx = confettiCanvas.getContext("2d");
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+  let confettiPieces = [];
+  for(let i=0;i<200;i++){
+    confettiPieces.push({
+      x: Math.random()*confettiCanvas.width,
+      y: Math.random()*confettiCanvas.height - confettiCanvas.height,
+      color: `hsl(${Math.random()*360},100%,50%)`,
+      size: Math.random()*8+4,
+      speed: Math.random()*5+2
+    });
+  }
+  function drawConfetti(){
+    ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+    confettiPieces.forEach(p=>{
+      ctx.fillStyle=p.color;
+      ctx.fillRect(p.x,p.y,p.size,p.size);
+      p.y+=p.speed;
+      if(p.y>confettiCanvas.height) p.y=-p.size;
+    });
+    requestAnimationFrame(drawConfetti);
+  }
+  drawConfetti();
+}
 
-// Scratch effect
+// Scratch setup
 const scratchCanvas = document.getElementById("scratchCanvas");
-const letterImg = document.getElementById("letterImg");
 const ctx = scratchCanvas.getContext("2d");
+const letterImg = document.getElementById("letterImg");
 
 function resizeCanvas(){
   scratchCanvas.width = letterImg.clientWidth;
   scratchCanvas.height = letterImg.clientHeight;
   ctx.fillStyle = "magenta";
   ctx.fillRect(0,0,scratchCanvas.width,scratchCanvas.height);
-
-  // hint text
   ctx.fillStyle="white";
   ctx.font="bold 3vw Poppins";
   ctx.textAlign="center";
   ctx.fillText("Scratch here to reveal your letter 💌", scratchCanvas.width/2, scratchCanvas.height/2);
 }
 window.addEventListener("resize", resizeCanvas);
-letterImg.onload = resizeCanvas;
 
 let scratching = false;
 scratchCanvas.addEventListener("mousedown",()=>scratching=true);
 scratchCanvas.addEventListener("mouseup",()=>scratching=false);
 scratchCanvas.addEventListener("mousemove",scratch);
-
 scratchCanvas.addEventListener("touchstart",()=>scratching=true);
 scratchCanvas.addEventListener("touchend",()=>scratching=false);
 scratchCanvas.addEventListener("touchmove",scratch);
@@ -233,26 +242,26 @@ scratchCanvas.addEventListener("touchmove",scratch);
 function scratch(e){
   if(!scratching) return;
   e.preventDefault();
-  let x = (e.clientX || e.touches[0].clientX) - scratchCanvas.getBoundingClientRect().left;
-  let y = (e.clientY || e.touches[0].clientY) - scratchCanvas.getBoundingClientRect().top;
+  const rect = scratchCanvas.getBoundingClientRect();
+  const clientX = e.clientX || e.touches[0].clientX;
+  const clientY = e.clientY || e.touches[0].clientY;
+  const x = clientX - rect.left;
+  const y = clientY - rect.top;
   ctx.globalCompositeOperation="destination-out";
   ctx.beginPath();
-  ctx.arc(x,y,25,0,Math.PI*2);
+  ctx.arc(x,y,30,0,Math.PI*2);
   ctx.fill();
 }
 
-// Confetti function
-function launchConfetti(){
-  for(let i=0;i<80;i++){
-    let conf=document.createElement("div");
-    conf.className="confetti";
-    conf.style.left=Math.random()*100+"vw";
-    conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
-    conf.style.animationDuration=(0.7+Math.random()*0.8)+"s";
-    document.body.appendChild(conf);
-    setTimeout(()=>conf.remove(),1500);
-  }
-}
+// Slideshow
+const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
+let idx=0;
+const slide=document.getElementById("slide");
+setInterval(()=>{
+  idx=(idx+1)%photos.length;
+  slide.style.opacity=0;
+  setTimeout(()=>{ slide.src=photos[idx]; slide.style.opacity=1; },600);
+},3000);
 </script>
 </body>
 </html>
