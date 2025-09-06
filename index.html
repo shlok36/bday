@@ -6,151 +6,145 @@
 <title>Happy Birthday Kinjal</title>
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; width: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; background: #000; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { height:100%; width:100%; font-family:'Poppins',sans-serif; overflow:hidden; background:#000; }
 
   .page {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: flex; justify-content: center; align-items: center;
-    flex-direction: column;
-    transition: opacity 1s ease;
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    display:flex; justify-content:center; align-items:center; flex-direction:column;
+    transition: opacity 0.8s ease; opacity:0; pointer-events:none;
   }
+  .page.active { opacity:1; pointer-events:auto; }
 
-  /* Page 1 */
-  #page1 { background: radial-gradient(circle at center, #0f0f1f, #000); color: #fff; text-align: center; }
-  #countdown { font-size: 15vw; font-weight: 800; color: #ff4f81; animation: pop 1s infinite alternate; }
-  @keyframes pop { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.4); opacity: 1; } }
-  #birthdayMessage { display: none; font-family: 'Sacramento', cursive; font-size: 12vw; color: #ffccff; text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff4f81; animation: glow 1.5s infinite alternate; }
-  @keyframes glow { from { text-shadow: 0 0 3vw #ff66cc, 0 0 6vw #ff4f81; } to { text-shadow: 0 0 6vw #ff99ff, 0 0 10vw #ff4f81; } }
+  /* Page1 */
+  #page1 { background: radial-gradient(circle at center, #0f0f1f, #000); color:#fff; text-align:center; }
+  #countdown { font-size:15vw; font-weight:800; color:#ff4f81; animation:pop 1s infinite alternate; }
+  @keyframes pop { from { transform:scale(1); opacity:0.8;} to { transform:scale(1.4); opacity:1;} }
+  #birthdayMessage { display:none; font-family:'Sacramento',cursive; font-size:12vw; color:#ffccff; text-shadow:0 0 20px #ff66cc,0 0 40px #ff4f81; animation:glow 1.5s infinite alternate; }
+  @keyframes glow { from {text-shadow:0 0 3vw #ff66cc,0 0 6vw #ff4f81;} to {text-shadow:0 0 6vw #ff99ff,0 0 10vw #ff4f81;} }
 
-  /* Page 2: Video */
-  #page2 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: white; opacity: 0; pointer-events: none; flex-direction: column; }
-  #videoContainer { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 90%; max-width: 600px; }
-  #birthdayVideo { width: 100%; max-height: 60vh; border-radius: 3vw; box-shadow: 0 0 4vw rgba(255,79,129,0.8); background: black; }
-  .video-controls { margin-top: 2vw; display: flex; gap: 2vw; flex-wrap: wrap; justify-content: center; }
-  .video-controls button { padding: 2vw 4vw; border: none; border-radius: 5vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; font-size: 3vw; box-shadow: 0 0.5vw 1.5vw rgba(0,0,0,0.4); transition: transform 0.3s; }
-  .video-controls button:hover { transform: scale(1.1); }
+  /* Page2 */
+  #page2 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color:white; flex-direction:column; }
+  #videoContainer { width:90%; max-width:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  #birthdayVideo { width:100%; max-height:60vh; border-radius:3vw; box-shadow:0 0 4vw rgba(255,79,129,0.8); background:black; }
+  .video-controls { margin-top:2vw; display:flex; gap:2vw; flex-wrap:wrap; justify-content:center; }
+  .video-controls button { padding:2vw 4vw; border:none; border-radius:5vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; font-weight:600; font-size:3vw; cursor:pointer; box-shadow:0 0.5vw 1.5vw rgba(0,0,0,0.4); transition:transform 0.3s;}
+  .video-controls button:hover { transform:scale(1.1); }
 
-  /* Page 3: Letter */
-  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center; }
-  .letter-box {
-    width: 90vw; max-width: 400px; height: 90vw; max-height: 400px;
-    background: rgba(255,255,255,0.08); border-radius: 3vw; padding: 4vw;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    box-shadow: 0 1vw 3vw rgba(0,0,0,0.6); text-align: center;
-  }
-  .letter-box h2 { font-family: 'Sacramento', cursive; font-size: 6vw; margin-bottom: 2vw; color: #ff99ff; }
-  .letter-box p { font-size: 3.5vw; line-height: 1.5; color: #f0d9ff; }
-  .letter-box button { margin-top: 4vw; padding: 3vw 6vw; font-size: 4vw; border: none; border-radius: 10vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; box-shadow: 0 1vw 3vw rgba(0,0,0,0.4); transition: transform 0.3s; }
-  .letter-box button:hover { transform: scale(1.1); }
+  /* Page3 Letter */
+  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); display:flex; justify-content:center; align-items:center; }
+  .letter-box { width:90vw; max-width:400px; height:90vw; max-height:400px; background:rgba(255,255,255,0.08); border-radius:3vw; padding:4vw; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; box-shadow:0 1vw 3vw rgba(0,0,0,0.6); }
+  .letter-box h2 { font-family:'Sacramento',cursive; font-size:6vw; margin-bottom:2vw; color:#ff99ff; }
+  .letter-box p { font-size:3.5vw; line-height:1.5; color:#f0d9ff; }
+  .letter-box button { margin-top:4vw; padding:3vw 6vw; font-size:4vw; border:none; border-radius:10vw; background:linear-gradient(135deg,#ff4f81,#ff66cc); color:white; cursor:pointer; font-weight:600; box-shadow:0 1vw 3vw rgba(0,0,0,0.4); transition:transform 0.3s; }
+  .letter-box button:hover { transform:scale(1.1); }
 
-  /* Page 4: Slideshow */
-  #page4 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: #fff; opacity: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5vw; }
-  #page4 h1 { font-family: 'Sacramento', cursive; font-size: 10vw; color: #ffccff; margin-bottom: 4vw; text-shadow: 0 0 2vw #ff4f81, 0 0 4vw #ff66cc; text-align: center; }
-  .slideshow { width: 90%; max-width: 400px; display: flex; justify-content: center; align-items: center; }
-  .slideshow img { width: 100%; border-radius: 3vw; box-shadow: 0 0.5vw 3vw rgba(0,0,0,0.6); transition: opacity 0.6s ease-in-out; border: 0.5vw solid #ff4f81; }
+  /* Page4 Slideshow */
+  #page4 { background: linear-gradient(135deg,#0a0a0f,#1a1a2e); color:#fff; flex-direction:column; justify-content:center; align-items:center; padding:5vw; }
+  #page4 h1 { font-family:'Sacramento',cursive; font-size:10vw; color:#ffccff; margin-bottom:4vw; text-shadow:0 0 2vw #ff4f81,0 0 4vw #ff66cc; text-align:center; }
+  .slideshow { width:90%; max-width:400px; display:flex; justify-content:center; align-items:center; }
+  .slideshow img { width:100%; border-radius:3vw; box-shadow:0 0.5vw 3vw rgba(0,0,0,0.6); transition:opacity 0.6s ease-in-out; border:0.5vw solid #ff4f81; }
 
-  /* Signature */
-  .signature { position: absolute; font-family: 'Sacramento', cursive; font-size: 4vw; color: #ff99ff; opacity: 0.8; bottom: 2vw; left: 50%; transform: translateX(-50%); }
+  .signature { position:absolute; font-family:'Sacramento',cursive; font-size:4vw; color:#ff99ff; opacity:0.8; bottom:2vw; left:50%; transform:translateX(-50%); }
 </style>
 </head>
 <body>
 
-  <!-- Page 1 -->
-  <div id="page1" class="page">
-    <div id="countdown">3</div>
-    <div id="birthdayMessage">It's your 16th Birthday!</div>
-    <div class="signature">Made by Shlok</div>
-  </div>
+<!-- Page1 -->
+<div id="page1" class="page active">
+  <div id="countdown">3</div>
+  <div id="birthdayMessage">It's your 16th Birthday!</div>
+  <div class="signature">Made by Shlok</div>
+</div>
 
-  <!-- Page 2 -->
-  <div id="page2" class="page">
-    <div id="videoContainer">
-      <video id="birthdayVideo" poster="template.jpg">
-        <source src="MOVIE.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-controls">
-        <button onclick="playVideo()">▶ Play</button>
-        <button onclick="pauseVideo()">⏸ Pause</button>
-        <button onclick="restartVideo()">🔄 Restart</button>
-        <button onclick="toggleMute()" id="muteBtn">🔇 Mute</button>
-        <button onclick="nextPage()">Next ➝</button>
-      </div>
-    </div>
-    <div class="signature">Made by Shlok</div>
-  </div>
-
-  <!-- Page 3 -->
-  <div id="page3" class="page">
-    <div class="letter-box">
-      <h2>Dear Kinjal (habdi),</h2>
-      <p>
-        Happy Birthday, my princess! 🎂🎉<br><br>
-        Today’s the one day you officially get the license to boss everyone around even more than usual (beta zyada hawa me mt udna 😜).<br><br>
-        I don’t really know what to call us—more than just best friends, but not exactly love either. Whatever it is, I like it, because it’s ours. You make things lighter, funnier, and way more special.<br><br>
-        I hope this year tum chtiyo ki trah hasti raho (and maybe a few reasons to think of me 😏). Stay happy always.<br><br>
-        Made with a lot of wishes (and a little madness),<br>
-        <b>Shlok</b>
-      </p>
+<!-- Page2 Video -->
+<div id="page2" class="page">
+  <div id="videoContainer">
+    <video id="birthdayVideo" poster="template.jpg">
+      <source src="MOVIE.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-controls">
+      <button onclick="playVideo()">▶ Play</button>
+      <button onclick="pauseVideo()">⏸ Pause</button>
+      <button onclick="restartVideo()">🔄 Restart</button>
+      <button onclick="toggleMute()" id="muteBtn">🔇 Mute</button>
       <button onclick="nextPage()">Next ➝</button>
     </div>
-    <div class="signature">Made by Shlok</div>
   </div>
+  <div class="signature">Made by Shlok</div>
+</div>
 
-  <!-- Page 4 -->
-  <div id="page4" class="page">
-    <h1>Happy Birthday Kinjal</h1>
-    <div class="slideshow">
-      <img id="slide" src="photo1.jpg" alt="Kinjal">
-    </div>
-    <div class="signature">Made by Shlok</div>
+<!-- Page3 Letter -->
+<div id="page3" class="page">
+  <div class="letter-box">
+    <h2>Dear Kinjal (habdi),</h2>
+    <p>
+      Happy Birthday, my princess! 🎂🎉<br><br>
+      Today’s the one day you officially get the license to boss everyone around even more than usual (beta zyada hawa me mt udna 😜).<br><br>
+      I don’t really know what to call us—more than just best friends, but not exactly love either. Whatever it is, I like it, because it’s ours. You make things lighter, funnier, and way more special.<br><br>
+      I hope this year tum chtiyo ki trah hasti raho (and maybe a few reasons to think of me 😏). Stay happy always.<br><br>
+      Made with a lot of wishes (and a little madness),<br>
+      <b>Shlok</b>
+    </p>
+    <button onclick="nextPage()">Next ➝</button>
   </div>
+  <div class="signature">Made by Shlok</div>
+</div>
+
+<!-- Page4 Slideshow -->
+<div id="page4" class="page">
+  <h1>Happy Birthday Kinjal</h1>
+  <div class="slideshow">
+    <img id="slide" src="photo1.jpg" alt="Kinjal">
+  </div>
+  <div class="signature">Made by Shlok</div>
+</div>
 
 <script>
-  let count = 3;
-  const countdown = document.getElementById("countdown");
-  const birthdayMessage = document.getElementById("birthdayMessage");
-  const video = document.getElementById("birthdayVideo");
-  let currentPage = 1;
+let currentPage = 1;
+const totalPages = 4;
+const pages = [document.getElementById("page1"),document.getElementById("page2"),document.getElementById("page3"),document.getElementById("page4")];
 
-  const timer = setInterval(() => {
-    count--;
-    if (count > 0) countdown.textContent = count;
-    else {
-      clearInterval(timer);
-      countdown.style.display = "none";
-      birthdayMessage.style.display = "block";
-      setTimeout(() => { nextPage(); }, 2000);
-    }
-  }, 1000);
+let countdown = 3;
+const countdownEl = document.getElementById("countdown");
+const birthdayMsg = document.getElementById("birthdayMessage");
+const video = document.getElementById("birthdayVideo");
 
-  function nextPage() {
-    if (currentPage === 2 && !video.paused) { video.pause(); video.currentTime = 0; }
-    const current = document.getElementById("page" + currentPage);
-    current.style.opacity = "0";
-    setTimeout(() => {
-      current.style.display = "none";
-      currentPage++;
-      const next = document.getElementById("page" + currentPage);
-      if (next) { next.style.opacity = "1"; next.style.pointerEvents = "auto"; }
-    }, 800);
+const timer = setInterval(()=>{
+  countdown--;
+  if(countdown>0) countdownEl.textContent = countdown;
+  else {
+    clearInterval(timer);
+    countdownEl.style.display="none";
+    birthdayMsg.style.display="block";
+    setTimeout(()=>{ nextPage(); },2000);
   }
+},1000);
 
-  function playVideo() { video.play(); }
-  function pauseVideo() { video.pause(); }
-  function restartVideo() { video.currentTime = 0; video.play(); }
-  function toggleMute() { video.muted = !video.muted; document.getElementById("muteBtn").textContent = video.muted ? "🔊 Unmute" : "🔇 Mute"; }
+function nextPage(){
+  if(currentPage===2 && !video.paused){ video.pause(); video.currentTime=0; }
+  pages[currentPage-1].classList.remove("active");
+  currentPage++;
+  if(currentPage>totalPages) currentPage=totalPages;
+  pages[currentPage-1].classList.add("active");
+}
 
-  const photos = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
-  let idx = 0;
-  const slide = document.getElementById("slide");
-  setInterval(() => {
-    idx = (idx+1)%photos.length;
-    slide.style.opacity = 0;
-    setTimeout(()=>{ slide.src = photos[idx]; slide.style.opacity=1; },600);
-  },3000);
+function playVideo(){ video.play(); }
+function pauseVideo(){ video.pause(); }
+function restartVideo(){ video.currentTime=0; video.play(); }
+function toggleMute(){ video.muted=!video.muted; document.getElementById("muteBtn").textContent=video.muted?"🔊 Unmute":"🔇 Mute"; }
+
+// Slideshow
+const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
+let idx=0;
+const slide = document.getElementById("slide");
+setInterval(()=>{
+  idx=(idx+1)%photos.length;
+  slide.style.opacity=0;
+  setTimeout(()=>{ slide.src=photos[idx]; slide.style.opacity=1; },600);
+},3000);
+
 </script>
 </body>
 </html>
