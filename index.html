@@ -21,13 +21,6 @@
   #countdown { font-size: 15vw; font-weight: 800; color: #ff4f81; animation: pop 1s infinite alternate; }
   @keyframes pop { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.4); opacity: 1; } }
   #birthdayMessage { display: none; font-family: 'Sacramento', cursive; font-size: 12vw; color: #ffccff; text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff4f81; animation: glow 1.5s infinite alternate; }
-  #birthdayText { display: none; text-align: center; }
-  #birthdayText h1 { font-family: 'Sacramento', cursive; font-size: 10vw; color: #ffccff; animation: glow 1.5s infinite alternate; }
-  #birthdayText p { font-size: 5vw; margin-top: 1vw; color: #f8e1ff; }
-  #birthdayText img { margin-top: 4vw; width: 50vw; max-width: 240px; aspect-ratio: 1/1; border-radius: 50%; object-fit: cover; border: 0.8vw solid #ff4f81; box-shadow: 0 0 5vw rgba(255,79,129,0.8); }
-  #birthdayText button { margin-top: 5vw; padding: 3vw 7vw; font-size: 4vw; border: none; border-radius: 10vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; box-shadow: 0 1vw 3vw rgba(0,0,0,0.4); transition: transform 0.3s; }
-  #birthdayText button:hover { transform: scale(1.1); }
-  @keyframes glow { from { text-shadow: 0 0 3vw #ff66cc, 0 0 6vw #ff4f81; } to { text-shadow: 0 0 6vw #ff99ff, 0 0 10vw #ff4f81; } }
 
   /* Page 2 */
   #page2 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: white; opacity: 0; pointer-events: none; flex-direction: column; justify-content: center; align-items: center; }
@@ -37,44 +30,38 @@
   .video-controls button { padding: 2vw 4vw; border: none; border-radius: 5vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; font-size: 3vw; box-shadow: 0 0.5vw 1.5vw rgba(0,0,0,0.4); transition: transform 0.3s; }
   .video-controls button:hover { transform: scale(1.1); }
 
-  /* Page 3 fully responsive with scrollable letter */
-  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: #f5f5f5; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center; padding: 2vw; }
-  .container { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3vw; width: 100%; height: 100%; }
-  @media(min-width: 600px) { .container { flex-direction: row; justify-content: center; flex-wrap: nowrap; gap: 5vw; } }
-
-  .letter { background: rgba(255,255,255,0.08); padding: 3vw; border-radius: 3vw; box-shadow: 0 1vw 3vw rgba(0,0,0,0.6); line-height: 1.6; font-size: 4vw; color: #f0d9ff; flex: 1 1 0; max-height: 90vh; overflow-y: auto; }
+  /* Page 3: Letter full visible */
+  #page3 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: #f5f5f5; opacity: 0; pointer-events: none; display: flex; justify-content: center; align-items: center; padding: 5vw; }
+  .letter { background: rgba(255,255,255,0.08); padding: 4vw; border-radius: 3vw; box-shadow: 0 1vw 3vw rgba(0,0,0,0.6); line-height: 1.6; font-size: 4vw; color: #f0d9ff; text-align: center; max-width: 90%; }
   .letter h2 { font-family: 'Sacramento', cursive; font-size: 8vw; margin-bottom: 2vw; color: #ff99ff; }
-  .letter::-webkit-scrollbar { width: 0.5vw; }
-  .letter::-webkit-scrollbar-thumb { background: rgba(255,79,129,0.6); border-radius: 2vw; }
+  .letter button { margin-top: 4vw; padding: 3vw 6vw; font-size: 4vw; border: none; border-radius: 10vw; background: linear-gradient(135deg, #ff4f81, #ff66cc); color: white; cursor: pointer; font-weight: 600; box-shadow: 0 1vw 3vw rgba(0,0,0,0.4); transition: transform 0.3s; }
+  .letter button:hover { transform: scale(1.1); }
 
-  .slideshow { flex: 1 1 0; min-width: 150px; display: flex; justify-content: center; align-items: center; max-height: 90vh; }
-  .slideshow img { width: 90%; max-width: 300px; border-radius: 3vw; box-shadow: 0 0.5vw 3vw rgba(0,0,0,0.6); transition: opacity 0.6s ease-in-out; border: 0.5vw solid #ff4f81; object-fit: contain; }
+  /* Page 4: Slideshow */
+  #page4 { background: linear-gradient(135deg, #0a0a0f, #1a1a2e); color: #fff; opacity: 0; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5vw; }
+  #page4 h1 { font-family: 'Sacramento', cursive; font-size: 10vw; color: #ffccff; margin-bottom: 4vw; text-shadow: 0 0 2vw #ff4f81, 0 0 4vw #ff66cc; text-align: center; }
+  .slideshow { width: 100%; max-width: 400px; display: flex; justify-content: center; align-items: center; }
+  .slideshow img { width: 90%; border-radius: 3vw; box-shadow: 0 0.5vw 3vw rgba(0,0,0,0.6); transition: opacity 0.6s ease-in-out; border: 0.5vw solid #ff4f81; }
 
   /* Floating hearts */
   .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
   .heart { position: absolute; color: #ff4f81; font-size: 6vw; animation: float 6s linear infinite; }
   @keyframes float { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
 
-  /* Signatures */
+  /* Signature */
   .signature { position: absolute; font-family: 'Sacramento', cursive; font-size: 4vw; color: #ff99ff; opacity: 0.8; bottom: 2vw; left: 50%; transform: translateX(-50%); }
 </style>
 </head>
 <body>
 
-  <!-- Page 1 -->
+  <!-- Page 1: Countdown -->
   <div id="page1" class="page">
     <div id="countdown">3</div>
     <div id="birthdayMessage">It's your 16th Birthday!</div>
-    <div id="birthdayText">
-      <h1>Happy Birthday Kinjal</h1>
-      <p>(habdi)</p>
-      <img src="photo1.jpg" alt="Kinjal">
-      <button onclick="nextPage()">Next ➝</button>
-    </div>
     <div class="signature">Made by Shlok</div>
   </div>
 
-  <!-- Page 2 -->
+  <!-- Page 2: Video -->
   <div id="page2" class="page">
     <div id="videoContainer">
       <video id="birthdayVideo" poster="template.jpg">
@@ -92,24 +79,28 @@
     <div class="signature">Made by Shlok</div>
   </div>
 
-  <!-- Page 3 -->
+  <!-- Page 3: Full Letter -->
   <div id="page3" class="page">
-    <div class="hearts" id="hearts"></div>
-    <div class="container">
-      <div class="letter">
-        <h2>Dear Kinjal (habdi),</h2>
-        <p>
-          Happy Birthday, my princess! 🎂🎉<br><br>
-          Today’s the one day you officially get the license to boss everyone around even more than usual (beta zyada hawa me mt udna 😜).<br><br>
-          I don’t really know what to call us—more than just best friends, but not exactly love either. Whatever it is, I like it, because it’s ours. You make things lighter, funnier, and way more special.<br><br>
-          I hope this year tum chtiyo ki trah hasti raho (and maybe a few reasons to think of me 😏). Stay happy always.<br><br>
-          Made with a lot of wishes (and a little madness),<br>
-          <b>Shlok</b>
-        </p>
-      </div>
-      <div class="slideshow">
-        <img id="slide" src="photo1.jpg" alt="Kinjal">
-      </div>
+    <div class="letter">
+      <h2>Dear Kinjal (habdi),</h2>
+      <p>
+        Happy Birthday, my princess! 🎂🎉<br><br>
+        Today’s the one day you officially get the license to boss everyone around even more than usual (beta zyada hawa me mt udna 😜).<br><br>
+        I don’t really know what to call us—more than just best friends, but not exactly love either. Whatever it is, I like it, because it’s ours. You make things lighter, funnier, and way more special.<br><br>
+        I hope this year tum chtiyo ki trah hasti raho (and maybe a few reasons to think of me 😏). Stay happy always.<br><br>
+        Made with a lot of wishes (and a little madness),<br>
+        <b>Shlok</b>
+      </p>
+      <button onclick="nextPage()">Next ➝</button>
+    </div>
+    <div class="signature">Made by Shlok</div>
+  </div>
+
+  <!-- Page 4: Slideshow -->
+  <div id="page4" class="page">
+    <h1>Happy Birthday Kinjal</h1>
+    <div class="slideshow">
+      <img id="slide" src="photo1.jpg" alt="Kinjal">
     </div>
     <div class="signature">Made by Shlok</div>
   </div>
@@ -119,7 +110,6 @@
   let count = 3;
   const countdown = document.getElementById("countdown");
   const birthdayMessage = document.getElementById("birthdayMessage");
-  const birthdayText = document.getElementById("birthdayText");
 
   const timer = setInterval(() => {
     count--;
@@ -128,10 +118,7 @@
       clearInterval(timer);
       countdown.style.display = "none";
       birthdayMessage.style.display = "block";
-      setTimeout(() => {
-        birthdayMessage.style.display = "none";
-        birthdayText.style.display = "block";
-      }, 2000);
+      setTimeout(() => { nextPage(); }, 2000);
     }
   }, 1000);
 
@@ -139,10 +126,7 @@
   const video = document.getElementById("birthdayVideo");
 
   function nextPage() {
-    if (currentPage === 2 && !video.paused) {
-      video.pause();
-      video.currentTime = 0;
-    }
+    if (currentPage === 2 && !video.paused) { video.pause(); video.currentTime = 0; }
     const current = document.getElementById("page" + currentPage);
     current.style.opacity = "0";
     setTimeout(() => {
@@ -150,7 +134,7 @@
       currentPage++;
       const next = document.getElementById("page" + currentPage);
       if (next) { next.style.opacity = "1"; next.style.pointerEvents = "auto"; }
-    }, 1000);
+    }, 800);
   }
 
   // Video controls
@@ -158,19 +142,6 @@
   function pauseVideo() { video.pause(); }
   function restartVideo() { video.currentTime = 0; video.play(); }
   function toggleMute() { video.muted = !video.muted; document.getElementById("muteBtn").textContent = video.muted ? "🔊 Unmute" : "🔇 Mute"; }
-
-  // Floating hearts
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random()*100+"vw";
-    heart.style.fontSize = (4+Math.random()*6)+"vw";
-    heart.style.animationDuration = (4+Math.random()*5)+"s";
-    document.getElementById("hearts").appendChild(heart);
-    setTimeout(()=>heart.remove(),7000);
-  }
-  setInterval(createHeart, 400);
 
   // Slideshow
   const photos = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg"];
